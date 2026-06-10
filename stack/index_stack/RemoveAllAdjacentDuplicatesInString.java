@@ -1,4 +1,4 @@
-package index_stack;
+package stack.index_stack;
 
 import java.util.Stack;
 
