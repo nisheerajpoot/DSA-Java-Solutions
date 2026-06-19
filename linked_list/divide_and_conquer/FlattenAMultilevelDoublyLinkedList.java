@@ -26,8 +26,6 @@ public class FlattenAMultilevelDoublyLinkedList {
       Space Complexity :
       O(d)
 
-      d = maximum depth of multilevel list
-      (Recursive Call Stack)
     */
 
     static class Node {
@@ -117,13 +115,7 @@ public class FlattenAMultilevelDoublyLinkedList {
         FlattenAMultilevelDoublyLinkedList obj =
                 new FlattenAMultilevelDoublyLinkedList();
 
-        /*
-                 1 - 2 - 3 - 4 - 5 - 6
-                         |
-                         7 - 8 - 9 - 10
-                             |
-                             11 - 12
-        */
+      
 
         Node n1 = new Node(1);
         Node n2 = new Node(2);
