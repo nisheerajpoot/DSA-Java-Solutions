@@ -1,4 +1,4 @@
-package linked_list_basic;
+package linked_list_traversal;
 
 public class RemoveLinkedListElements {
 
