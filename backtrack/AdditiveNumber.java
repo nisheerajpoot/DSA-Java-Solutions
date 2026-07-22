@@ -53,13 +53,10 @@ public class AdditiveNumber {
                 break;
             }
 
-            long first =
-                    Long.parseLong(num.substring(0, i));
+            long first = Long.parseLong(num.substring(0, i));
 
             // Choose Second Number
-            for (int j = 1;
-                 Math.max(i, j) <= n - i - j;
-                 j++) {
+            for (int j = 1;Math.max(i, j) <= n - i - j;j++) {
 
                 // Leading Zero Check
                 if (num.charAt(i) == '0' &&
@@ -67,9 +64,7 @@ public class AdditiveNumber {
                     break;
                 }
 
-                long second =
-                        Long.parseLong(
-                                num.substring(i, i + j));
+                long second =Long.parseLong(num.substring(i, i + j));
 
                 if (backtrack(first,
                               second,
