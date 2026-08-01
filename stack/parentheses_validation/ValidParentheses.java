@@ -16,11 +16,9 @@ public class ValidParentheses {
             }
 
             else {
-
                 if (st.isEmpty()) {
                     return false;
                 }
-
                 if (ch == ')' && st.peek() == '(') {
                     st.pop();
                 }
