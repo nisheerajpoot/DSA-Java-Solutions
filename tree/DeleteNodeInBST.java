@@ -66,8 +66,7 @@ public class DeleteNodeInBST {
 
         } else {
 
-            if (root.left == null
-                    && root.right == null) {
+            if (root.left == null&& root.right == null) {
 
                 return null;
 
@@ -93,9 +92,7 @@ public class DeleteNodeInBST {
                 root.val =
                         successor.val;
 
-                root.right =
-                        deleteNode(root.right,
-                                   successor.val);
+                root.right =deleteNode(root.right,successor.val);
             }
         }
 
@@ -132,8 +129,7 @@ public class DeleteNodeInBST {
                                key);
 
         System.out.println(
-                "Root After Deletion : "
-                        + root.val);
+                "Root After Deletion : "+ root.val);
     }
 }
 
