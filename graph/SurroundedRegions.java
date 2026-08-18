@@ -75,14 +75,9 @@ public class SurroundedRegions {
             }
         }
 
-        // Convert Cells
-        for (int row = 0;
-             row < rows;
-             row++) {
+        for (int row = 0;row < rows;row++) {
 
-            for (int col = 0;
-                 col < cols;
-                 col++) {
+            for (int col = 0;col < cols;col++) {
 
                 if (board[row][col] == 'O') {
 
