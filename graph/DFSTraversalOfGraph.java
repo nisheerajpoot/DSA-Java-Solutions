@@ -40,15 +40,11 @@ public class DFSTraversalOfGraph {
     public ArrayList<Integer> dfs(
             ArrayList<ArrayList<Integer>> adj) {
 
-        int v =
-                adj.size();
+        int v = adj.size();
 
-        boolean[] visited =
-                new boolean[v];
+        boolean[] visited =new boolean[v];
 
-        dfs(0,
-            adj,
-            visited);
+        dfs(0,adj,visited);
 
         return ans;
     }
@@ -104,10 +100,8 @@ public class DFSTraversalOfGraph {
 
         adj.get(4).add(1);
 
-        ArrayList<Integer> result =
-                obj.dfs(adj);
+        ArrayList<Integer> result =obj.dfs(adj);
 
-        System.out.println(
-                "DFS Traversal : " + result);
+        System.out.println("DFS Traversal : " + result);
     }
 }
