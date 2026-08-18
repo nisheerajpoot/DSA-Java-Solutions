@@ -35,11 +35,9 @@ public class SurroundedRegions {
 
     public void solve(char[][] board) {
 
-        int rows =
-                board.length;
+        int rows =board.length;
 
-        int cols =
-                board[0].length;
+        int cols =board[0].length;
 
         // Check First and Last Row
         for (int col = 0;
@@ -47,16 +45,12 @@ public class SurroundedRegions {
              col++) {
 
             if (board[0][col] == 'O') {
-
-                dfs(board,
-                    0,
-                    col);
+                dfs(board,0,col);
             }
 
             if (board[rows - 1][col] == 'O') {
 
-                dfs(board,
-                    rows - 1,
+                dfs(board,rows - 1,
                     col);
             }
         }
