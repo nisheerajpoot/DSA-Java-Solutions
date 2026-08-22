@@ -55,30 +55,19 @@ public class FindEventualSafeStates {
     public List<Integer> eventualSafeNodes(
             int[][] graph) {
 
-        int V =
-                graph.length;
+        int V =graph.length;
 
-        int vist[] =
-                new int[V];
+        int vist[] =new int[V];
 
-        int PathVist[] =
-                new int[V];
+        int PathVist[] =new int[V];
 
-        int check[] =
-                new int[V];
+        int check[] =new int[V];
 
-        for (int i = 0;
-             i < V;
-             i++) {
+        for (int i = 0;i < V;i++) {
 
             if (vist[i] == 0) {
 
-                dfs(
-                        i,
-                        graph,
-                        vist,
-                        PathVist,
-                        check);
+                dfs(i,graph,vist,PathVist,check);
             }
         }
 
