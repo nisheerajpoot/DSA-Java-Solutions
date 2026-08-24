@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CourseScheduleBFS {
+public class CourseScheduleII {
 
     /*
       Platform : LeetCode
 
-      Question : Course Schedule
+      Question : Course Schedule II
 
       Pattern  : Topological Sort
 
@@ -23,7 +23,7 @@ public class CourseScheduleBFS {
       - Courses ko directed graph ke
         form mein represent karo.
 
-      - prerequisites [u, v] ka meaning:
+      - prerequisite [u, v] ka meaning:
         v ko pehle complete karna hai,
         uske baad u.
 
@@ -37,27 +37,20 @@ public class CourseScheduleBFS {
 
       - BFS perform karo.
 
-      - Course process hone ke baad
-        uske adjacent courses ka
+      - Processed course ko answer
+        array mein add karo.
+
+      - Uske adjacent courses ka
         indegree decrease karo.
 
-      - Agar kisi course ka indegree
-        0 ho jaye, use queue mein
-        add karo.
+      - Agar indegree 0 ho jaye,
+        course ko queue mein add karo.
 
-      - Count karo kitne courses
-        successfully process hue.
+      - Agar saare courses process ho
+        gaye, valid ordering possible hai.
 
-      - Agar count == numCourses,
-        saare courses complete ho sakte hain.
-
-      - Agar count < numCourses,
-        graph mein cycle hai.
-
-      Therefore:
-
-      count == numCourses → true
-      count < numCourses  → false
+      - Agar saare courses process nahi
+        hue, graph mein cycle hai.
 
       Time Complexity :
       O(V + E)
@@ -67,10 +60,11 @@ public class CourseScheduleBFS {
 
       (Adjacency List +
        Indegree Array +
-       Queue)
+       Queue +
+       Answer Array)
     */
 
-    public boolean canFinish(
+    public int[] findOrder(
             int numCourses,
             int[][] prerequisites) {
 
@@ -81,6 +75,10 @@ public class CourseScheduleBFS {
         // Queue for indegree 0 courses
         Queue<Integer> q =
                 new LinkedList<>();
+
+        // Answer array
+        int[] ans =
+                new int[numCourses];
 
         // Initialize adjacency list
         for (int i = 0;
@@ -135,7 +133,8 @@ public class CourseScheduleBFS {
 
             int node = q.poll();
 
-            count++;
+            // Store course in answer
+            ans[count++] = node;
 
             // Process adjacent courses
             for (int neighbor : adj.get(node)) {
@@ -152,36 +151,40 @@ public class CourseScheduleBFS {
         }
 
         // If all courses are processed,
-        // no cycle exists
+        // return valid ordering
         if (count == numCourses) {
 
-            return true;
+            return ans;
         }
 
         // Cycle exists
-        return false;
+        // Therefore ordering is impossible
+        return new int[]{};
     }
 
     public static void main(String[] args) {
 
-        CourseScheduleBFS obj =
-                new CourseScheduleBFS();
+        CourseScheduleII obj =
+                new CourseScheduleII();
 
         int numCourses = 4;
 
         int[][] prerequisites = {
                 {1, 0},
-                {2, 1},
+                {2, 0},
+                {3, 1},
                 {3, 2}
         };
 
-        boolean result =
-                obj.canFinish(
-                        numCourses,
-                        prerequisites);
+        int[] result =obj.findOrder(numCourses, prerequisites);
 
-        System.out.println(
-                "Can Finish Courses : "
-                        + result);
+        System.out.print(
+                "Course Order : ");
+
+        for (int course : result) {
+
+            System.out.print(
+                    course + " ");
+        }
     }
 }
