@@ -92,61 +92,41 @@ public class DijkstraShortestPath {
         dist.set(src, 0);
 
         // Min Heap
-        PriorityQueue<Pair> pq =
-                new PriorityQueue<>(
-                        (a, b) ->
-                                Integer.compare(
-                                        a.distance,
-                                        b.distance));
+        PriorityQueue<Pair> pq =new PriorityQueue<>((a, b) ->Integer.compare( a.distance, b.distance));
 
         // Source
-        pq.offer(
-                new Pair(src, 0));
+        pq.offer(new Pair(src, 0));
 
         // Dijkstra
         while (!pq.isEmpty()) {
 
-            Pair current =
-                    pq.poll();
+            Pair current = pq.poll();
 
-            int node =
-                    current.node;
+            int node =current.node;
 
-            int distance =
-                    current.distance;
+            int distance =current.distance;
 
             // Ignore outdated distance
-            if (distance >
-                    dist.get(node)) {
+            if (distance >dist.get(node)) {
 
                 continue;
             }
 
             // Check neighbors
-            for (Pair next :
-                    adj.get(node)) {
+            for (Pair next :adj.get(node)) {
 
-                int nextNode =
-                        next.node;
+                int nextNode =next.node;
 
-                int weight =
-                        next.distance;
+                int weight =next.distance;
 
-                int newDistance =
-                        distance + weight;
+                int newDistance =distance + weight;
 
                 // Relaxation
-                if (newDistance <
-                        dist.get(nextNode)) {
+                if (newDistance <dist.get(nextNode)) {
 
-                    dist.set(
-                            nextNode,
-                            newDistance);
+                    dist.set(nextNode, newDistance);
 
-                    pq.offer(
-                            new Pair(
-                                    nextNode,
-                                    newDistance));
+                    pq.offer(new Pair(nextNode,newDistance));
                 }
             }
         }
