@@ -99,8 +99,7 @@ public class NumberOfOperationsToMakeNetworkConnected {
 
     public static void main(String[] args) {
 
-        NumberOfOperationsToMakeNetworkConnected obj =
-                new NumberOfOperationsToMakeNetworkConnected();
+        NumberOfOperationsToMakeNetworkConnected obj =new NumberOfOperationsToMakeNetworkConnected();
 
         int n = 4;
 
