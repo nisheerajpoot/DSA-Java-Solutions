@@ -1,12 +1,50 @@
-import java.util.*;
+package graph;
 
-class Solution {
+import java.util.HashSet;
+
+public class MostStonesRemovedWithSameRowOrColumn {
+
+    /*
+     * ============================================================
+     * Platform   : LeetCode
+     * Problem    : 947. Most Stones Removed with Same Row or Column
+     * Pattern    : DSU + Connected Components
+     *
+     * Approach:
+     *
+     * 1. Treat every row and column as a DSU node.
+     *
+     * 2. For every stone at (row, col):
+     *
+     *      rowNode = row
+     *      colNode = col + 10001
+     *
+     *    The offset makes row and column nodes different.
+     *
+     * 3. Union the row node and column node.
+     *
+     * 4. Count the number of connected components.
+     *
+     * 5. In every connected component, all stones except
+     *    one can be removed.
+     *
+     * Therefore:
+     *
+     *      Maximum removable stones
+     *      = Total stones - Connected Components
+     *
+     * Time Complexity : O(N * α(N))
+     * Space Complexity: O(N)
+     * ============================================================
+     */
 
     static class DSU {
+
         int[] parent;
         int[] size;
 
         DSU(int n) {
+
             parent = new int[n];
             size = new int[n];
 
@@ -16,7 +54,9 @@ class Solution {
             }
         }
 
+        // Find ultimate parent using path compression
         int find(int node) {
+
             if (parent[node] == node) {
                 return node;
             }
@@ -24,6 +64,7 @@ class Solution {
             return parent[node] = find(parent[node]);
         }
 
+        // Union by size
         void union(int u, int v) {
 
             int parentU = find(u);
@@ -34,9 +75,12 @@ class Solution {
             }
 
             if (size[parentU] < size[parentV]) {
+
                 parent[parentU] = parentV;
                 size[parentV] += size[parentU];
+
             } else {
+
                 parent[parentV] = parentU;
                 size[parentU] += size[parentV];
             }
@@ -80,5 +124,24 @@ class Solution {
         }
 
         return n - components;
+    }
+
+    public static void main(String[] args) {
+
+        MostStonesRemovedWithSameRowOrColumn obj =
+                new MostStonesRemovedWithSameRowOrColumn();
+
+        int[][] stones = {
+                {0, 0},
+                {0, 1},
+                {1, 0},
+                {1, 2},
+                {2, 1},
+                {2, 2}
+        };
+
+        int result = obj.removeStones(stones);
+
+        System.out.println("Maximum Stones Removed: " + result);
     }
 }
