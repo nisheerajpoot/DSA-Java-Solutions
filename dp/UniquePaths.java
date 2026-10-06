@@ -23,7 +23,7 @@ public class UniquePaths {
      * First row:
      * Every cell has only one way to reach it.
      *
-     * First column:
+     * First column: 
      * Every cell has only one way to reach it.
      *
      * Time Complexity  : O(m * n)
